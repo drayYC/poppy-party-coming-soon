@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poppy Party — Atlanta's Most Curated Children's Party Experiences</title>
+<meta name="description" content="The most thoughtfully curated children's party entertainment in Atlanta. Coming soon.">
+<meta property="og:title" content="Poppy Party">
+<meta property="og:description" content="The most thoughtfully curated children's party entertainment in Atlanta. Coming soon.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cream: #F5F0E8;
+  --cream-dark: #EDE6D8;
+  --charcoal: #1A1A1A;
+  --charcoal-soft: #2D2D2D;
+  --poppy-red: #C8302C;
+  --poppy-red-dark: #9F2421;
+  --poppy-stem: #4A5D3A;
+  --poppy-center: #1A1A1A;
+  --sage: #87A878;
+  --blush: #F4D9CF;
+  --text-muted: #6B6258;
+  --border-subtle: rgba(26, 26, 26, 0.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--cream);
+  color: var(--charcoal);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Subtle grain texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.6;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 2.5rem;
+}
+
+/* ===== HEADER ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0;
+  animation: fadeInDown 1.2s ease-out 0.3s forwards;
+}
+
+.logo-mark {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+}
+
+.location-tag {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.location-tag::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--text-muted);
+}
+
+/* ===== MAIN HERO ===== */
+main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 4rem 0;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--poppy-red);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0;
+  animation: fadeIn 1s ease-out 0.6s forwards;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--poppy-red);
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--charcoal);
+  opacity: 0;
+  animation: fadeInUp 1.2s ease-out 0.8s forwards;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--poppy-red);
+  font-weight: 400;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--charcoal);
+  opacity: 0;
+  animation: expandWidth 1s ease-out 1.2s forwards;
+}
+
+.hero-description {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--charcoal-soft);
+  max-width: 460px;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 1.4s forwards;
+}
+
+/* ===== POPPY ILLUSTRATION ===== */
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+  opacity: 0;
+  animation: fadeIn 1.5s ease-out 0.5s forwards;
+}
+
+.poppy-img {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  filter: drop-shadow(0 30px 60px rgba(200, 48, 44, 0.15));
+  opacity: 0;
+  animation: poppyEnter 1.5s ease-out 0.8s forwards, gentleBreath 6s ease-in-out infinite 3s;
+}
+
+@keyframes poppyEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Decorative scattered petals */
+.scatter-petal {
+  position: absolute;
+  width: 24px;
+  height: 32px;
+  background: var(--poppy-red);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  opacity: 0;
+}
+
+.scatter-petal:nth-child(2) {
+  top: 10%;
+  right: 15%;
+  transform: rotate(35deg);
+  animation: scatterFloat 1s ease-out 2s forwards, gentleFloat 5s ease-in-out infinite 3s;
+}
+
+.scatter-petal:nth-child(3) {
+  bottom: 15%;
+  left: 8%;
+  width: 18px;
+  height: 24px;
+  transform: rotate(-25deg);
+  animation: scatterFloat 1s ease-out 2.3s forwards, gentleFloat 6s ease-in-out infinite 3.5s;
+}
+
+.scatter-petal:nth-child(4) {
+  top: 35%;
+  left: 5%;
+  width: 14px;
+  height: 18px;
+  transform: rotate(60deg);
+  opacity: 0.7;
+  animation: scatterFloat 1s ease-out 2.6s forwards, gentleFloat 7s ease-in-out infinite 4s;
+}
+
+/* ===== EMAIL CAPTURE ===== */
+.email-section {
+  margin-top: 1rem;
+  opacity: 0;
+  animation: fadeInUp 1s ease-out 1.6s forwards;
+}
+
+.email-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.email-form {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--charcoal);
+  padding-bottom: 2px;
+  max-width: 480px;
+  transition: border-color 0.3s ease;
+}
+
+.email-form:focus-within {
+  border-bottom-color: var(--poppy-red);
+}
+
+.email-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0.75rem 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  color: var(--charcoal);
+}
+
+.email-input::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.email-submit {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.75rem 0 0.75rem 1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.email-submit:hover {
+  color: var(--poppy-red);
+}
+
+.email-submit::after {
+  content: '→';
+  transition: transform 0.3s ease;
+}
+
+.email-submit:hover::after {
+  transform: translateX(4px);
+}
+
+.email-helper {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+}
+
+.email-success {
+  display: none;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--poppy-red);
+  margin-top: 0.5rem;
+}
+
+.email-success.visible {
+  display: block;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-subtle);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0;
+  animation: fadeIn 1s ease-out 2s forwards;
+}
+
+.footer-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text-muted);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes expandWidth {
+  from { opacity: 0; width: 0; }
+  to { opacity: 1; width: 60px; }
+}
+
+@keyframes petalBloom {
+  from {
+    opacity: 0;
+    transform: scale(0.3) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes gentleBreath {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.015) rotate(0.3deg); }
+}
+
+@keyframes scatterFloat {
+  to { opacity: 1; }
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translate(0, 0) rotate(35deg); }
+  50% { transform: translate(8px, -12px) rotate(40deg); }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  main {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+  }
+
+  .hero-visual {
+    min-height: 320px;
+    order: -1;
+  }
+
+  .poppy-img {
+    max-width: 280px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 9vw, 4rem);
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 500px) {
+  header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .location-tag::before {
+    display: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="logo-mark">Poppy Party</div>
+    <div class="location-tag">Atlanta, Georgia</div>
+  </header>
+
+  <main>
+    <div class="hero-content">
+      <div class="eyebrow">Coming Soon</div>
+
+      <h1 class="hero-title">
+        Atlanta's most<br>
+        <em>thoughtfully curated</em><br>
+        children's parties.
+      </h1>
+
+      <div class="hero-divider"></div>
+
+      <p class="hero-description">
+        From bounce houses to balloon artists, ponies to pottery painters,
+        we're building the place where Atlanta parents find the people who
+        make birthdays unforgettable.
+      </p>
+
+      <div class="email-section">
+        <span class="email-label">Be the first to know</span>
+        <form class="email-form" id="emailForm" action="https://formspree.io/f/https://formspree.io/f/xqenawao" method="POST">
+          <input
+            type="email"
+            name="email"
+            class="email-input"
+            placeholder="your@email.com"
+            required
+            id="emailInput"
+            aria-label="Email address"
+          >
+          <button type="submit" class="email-submit">Join</button>
+        </form>
+        <p class="email-helper">No spam, just an invite when we open the doors.</p>
+        <p class="email-success" id="emailSuccess">Thank you. We'll be in touch soon.</p>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="scatter-petal"></div>
+      <div class="scatter-petal"></div>
+      <div class="scatter-petal"></div>
+
+      <img class="poppy-img" src="poppy-icon.png" alt="Poppy Party">
+    </div>
+  </main>
+
+  <footer>
+    <div>© 2026 Poppy Party</div>
+    <div class="footer-tagline">Made with care in Atlanta</div>
+    <div>poppyparty.com</div>
+  </footer>
+
+</div>
+
+<script>
+const form = document.getElementById('emailForm');
+const successMsg = document.getElementById('emailSuccess');
+const helper = document.querySelector('.email-helper');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      form.style.display = 'none';
+      helper.style.display = 'none';
+      successMsg.classList.add('visible');
+    } else {
+      successMsg.textContent = 'Something went wrong. Please try again.';
+      successMsg.classList.add('visible');
+    }
+  } catch (error) {
+    successMsg.textContent = 'Something went wrong. Please try again.';
+    successMsg.classList.add('visible');
+  }
+});
+</script>
+
+</body>
+</html>
