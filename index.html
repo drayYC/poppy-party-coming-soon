@@ -123,7 +123,7 @@ main {
 .hero-content {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 .eyebrow {
@@ -151,8 +151,8 @@ main {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 400;
   font-size: clamp(3rem, 7vw, 6rem);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
   color: var(--charcoal);
   opacity: 0;
   animation: fadeInUp 1.2s ease-out 0.8s forwards;
@@ -162,6 +162,8 @@ main {
   font-style: italic;
   color: var(--poppy-red);
   font-weight: 400;
+  display: inline-block;
+  padding: 0.05em 0;
 }
 
 .hero-divider {
@@ -493,7 +495,7 @@ footer {
 
       <div class="email-section">
         <span class="email-label">Be the first to know</span>
-        <form class="email-form" id="emailForm" action="https://formspree.io/f/xqenawao" method="POST">
+        <form class="email-form" id="emailForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
           <input
             type="email"
             name="email"
